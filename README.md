@@ -46,6 +46,7 @@ instance.get('/products').then((data) => console.log(data));
 
 ## 참고
 - [api사용예제](https://velog.io/@khw970421/Fetch-%EC%82%AC%EC%9A%A9%EB%B2%95)
+- [api crud프로젝트](https://ukcasso.tistory.com/80)
 
 
 
