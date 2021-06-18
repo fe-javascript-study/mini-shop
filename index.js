@@ -1,16 +1,4 @@
-import axios from "axios";
+import { getShop } from "./api/index";
 
-const instance = axios.create({
- baseURL: 'http://localhost:8080'
-});
+const getShopData = getShop().then((data) => console.log(data))
 
-instance.interceptors.request.use(
-    function (config) {
-     config.headers["Content-Type"] = "application/json; charset=utf-8";
-     return config;
-    },
-    function (error) {
-     console.warn(error);
-     return Promise.reject(error);
-    }
-);
