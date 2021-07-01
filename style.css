@@ -1,0 +1,83 @@
+body {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 5rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+section {
+  margin-top: 4rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.clothes {
+  width: 4.5em;
+  height: 2.5em;
+
+  background-color: rgb(51, 51, 51);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0.5em;
+}
+
+.clo__blue:hover {
+  background-color: rgb(0, 102, 255);
+}
+
+.clo__yellow:hover {
+  background-color: rgb(255, 255, 0);
+}
+
+.clo__pink:hover {
+  background-color: pink;
+}
+
+.container {
+  width: 50%;
+  background-color: rgb(233, 233, 233);
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.inform {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: center;
+}
+
+.inform__span {
+  font-size: 1em;
+  font-weight: bolder;
+  color: rgb(41, 41, 41);
+}
+
+.inform-btn {
+  width: 3em;
+  height: 3em;
+  border: none;
+  background-color: rgb(122, 122, 122);
+  margin: 0.5em;
+  padding: 0;
+  transition: all 200ms linear;
+}
+
+.inform-btn:hover {
+  background-color: white;
+}
