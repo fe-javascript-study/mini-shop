@@ -1,6 +1,5 @@
 import { getShop } from "./api/index";
 
-
 const renderTotalList =  () => {
     const contents = document.querySelector('.shop--contents');
 
@@ -30,3 +29,26 @@ const renderTotalList =  () => {
 }
 
 renderTotalList()
+
+const shopFilters = () => {
+    const filters = ['셔츠','바지','스커트','블루','옐로우','핑크'];
+    const itmes = document.querySelector('.shop--filters')
+
+    filters.map((item,idx) => {
+        let li = document.createElement('li');
+        li.textContent = item;
+        li.setAttribute('idx', idx);
+        onFilter(filters,li);
+        itmes.append(li);
+    });
+}
+
+const onFilter = (data,list) => {
+    list.addEventListener('click',(e) => {
+        const curData = e.target.getAttribute('idx')
+        console.log(data[curData])
+    });
+}
+
+shopFilters()
+
