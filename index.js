@@ -1,7 +1,6 @@
-import { getShop, filterShopList } from "./api/index";
+import { getShop, filterShopList, deleteShopList } from "./api/index";
 
 const renderTotalList =  () => {
-
     getShop().then((data) => {
         listRender(data)
     })
@@ -26,15 +25,12 @@ const onFilter = (data,list) => {
         const hashData = {셔츠:{key:'name',value:'shirt'},바지:{key:'name',value:'pants'},스커트:{key:'name',value:'skirt'},옐로우:{key:'color',value:'yellow'},블루:{key:'color',value:'blue'}}
 
         filterShopList(hashData[data[curData]].key,hashData[data[curData]].value).then((data) => {
-            console.log('ddd',data)
             listRender(data);
         })
     });
 }
 
 const listRender = (data) => {
-
-    console.log(data);
     const contents = document.querySelector('.shop--contents');
 
     let list = `<li>
@@ -45,7 +41,7 @@ const listRender = (data) => {
             <span>가격</span>
         </li>`;
 
-    data.map((item, idx) => list += `<li data-idx="${idx}">
+    data.map((item, idx) => list += `<li data-idx="${item.id}" key="${idx}">
             <span>${item.name}</span>
             <span>${item.gender}</span>
             <span>${item.size}</span>
@@ -53,13 +49,30 @@ const listRender = (data) => {
             <span>${item.price}</span>
             <span>
                 <button>수정</button>
-                <button>삭제</button>
+                <button class="btn--delete">삭제</button>
             </span>
         </li>`)
 
     contents.innerHTML = list;
+
+    onDelete()
+}
+
+const onDelete = () => {
+    const btn = document.querySelectorAll('.btn--delete');
+
+    console.log(btn)
+
+    Array.from(btn).map((item) => {
+        item.addEventListener('click',(e) => {
+            const deleteNum = e.target.parentElement.parentElement.getAttribute('data-idx')
+
+            deleteShopList(deleteNum).then((data) => {
+                renderTotalList()
+            })
+        })
+    })
 }
 
 renderTotalList()
 shopFilters()
-

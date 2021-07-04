@@ -38,3 +38,9 @@ export const filterShopList = (filterName, params) => {
         return res
     });
 }
+
+export const deleteShopList = (idx) => {
+    return instance.delete(`/products/${idx}`).then((data) => {
+        return data
+    });
+}
