@@ -32,3 +32,9 @@ export const getShop = () => {
         return res;
     });
 }
+
+export const filterShopList = (filterName, params) => {
+    return instance.get(`/products?${filterName}=${params}`).then((res) => {
+        return res
+    });
+}
