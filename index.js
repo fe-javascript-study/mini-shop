@@ -1,4 +1,4 @@
-import { getShop, filterShopList, deleteShopList } from "./api/index";
+import { getShop, filterShopList, deleteShopList, addShopList } from "./api/index";
 
 const renderTotalList =  () => {
     getShop().then((data) => {
@@ -76,9 +76,9 @@ const onDelete = () => {
 const onAdd = () => {
     const btn = document.querySelector('.btn--add');
 
-    const popupBox = document.createElement('from');
-    const inputs = ['gender','size','color','price','name'];
-    const confirmBtn = document.createElement('button')
+    const popupBox = document.createElement('div');
+    const inputs = ['name','gender','size','color','price'];
+    const confirmBtn = document.createElement('button');
 
     popupBox.classList.add('popup-box');
 
@@ -94,11 +94,37 @@ const onAdd = () => {
         label.htmlFor = item;
 
         confirmBtn.textContent = '확인';
-        confirmBtn.type = 'submit';
+        confirmBtn.type = 'button';
 
         popupBox.append(label);
         popupBox.append(input);
         popupBox.append(confirmBtn);
+    });
+
+    confirmBtn.addEventListener('click', () => {
+       let inputValues = document.querySelectorAll('input');
+       let newValue = {};
+
+
+       Array.from(inputValues).map((item) => {
+           if(!item.value.length) {
+               item.classList.add('error');
+           }else{
+               item.classList.remove('error');
+           }
+           newValue[item.name]  = item.value;
+       });
+
+       if(Object.values(newValue).every((item) => item.length)){
+           addShopList(newValue).then((data) => {
+               if(data){
+                   popupBox.remove();
+               }
+               renderTotalList();
+           })
+       }else{
+           alert('입력을 다시 해주세요.');
+       }
     });
 
     btn.addEventListener('click', () => {

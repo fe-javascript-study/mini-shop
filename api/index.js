@@ -44,3 +44,9 @@ export const deleteShopList = (idx) => {
         return data
     });
 }
+
+export const addShopList = (params) => {
+    return instance.post(`/products/`, params).then((data) => {
+        return data
+    });
+}
