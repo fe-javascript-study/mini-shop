@@ -117,4 +117,8 @@ table {
     padding: 20px;
     border: 1px solid #dddd;
     background: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
