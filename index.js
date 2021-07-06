@@ -56,12 +56,11 @@ const listRender = (data) => {
     contents.innerHTML = list;
 
     onDelete()
+    onAdd()
 }
 
 const onDelete = () => {
     const btn = document.querySelectorAll('.btn--delete');
-
-    console.log(btn)
 
     Array.from(btn).map((item) => {
         item.addEventListener('click',(e) => {
@@ -72,6 +71,39 @@ const onDelete = () => {
             })
         })
     })
+}
+
+const onAdd = () => {
+    const btn = document.querySelector('.btn--add');
+
+    const popupBox = document.createElement('from');
+    const inputs = ['gender','size','color','price','name'];
+    const confirmBtn = document.createElement('button')
+
+    popupBox.classList.add('popup-box');
+
+    inputs.map((item,idx) => {
+        let input = document.createElement('input');
+        let label = document.createElement('label');
+
+        input.name = item;
+        input.id = item;
+        input.autocomplete = 'off';
+
+        label.textContent = item;
+        label.htmlFor = item;
+
+        confirmBtn.textContent = '확인';
+        confirmBtn.type = 'submit';
+
+        popupBox.append(label);
+        popupBox.append(input);
+        popupBox.append(confirmBtn);
+    });
+
+    btn.addEventListener('click', () => {
+        document.body.append(popupBox);
+    });
 }
 
 renderTotalList()
