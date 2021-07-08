@@ -4,7 +4,7 @@
   "main": "index.html",
   "license": "MIT",
   "scripts": {
-    "start": "parcel -p 3000 watch ./index.html --open",
+    "start": "parcel -p 8000 watch ./index.html --open",
     "dev": "nodemon server.js",
     "db": "node fake-data-generator.js>db.json"
   },

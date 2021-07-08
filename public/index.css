@@ -1,10 +1,10 @@
 @font-face {
     font-family: "GmarketSansTTFBold";
-    src: url("../font/GmarketSansTTFBold.ttf");
+    src: url("./font/GmarketSansTTFBold.ttf");
 }
 @font-face {
     font-family: "GmarketSansTTFLight";
-    src: url("../font/GmarketSansTTFLight.ttf");
+    src: url("./font/GmarketSansTTFLight.ttf");
 }
 :root {
     --mint-color: #CDF0EA;
@@ -124,6 +124,9 @@ button {
     border-radius: 10px;
     width: 50%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+h2 {
+    color: var(--black-color);
 }
 .hidden {
     display: none;
