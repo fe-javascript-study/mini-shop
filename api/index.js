@@ -50,3 +50,9 @@ export const addShopList = (params) => {
         return data
     });
 }
+
+export const editShopList = (idx,params) => {
+    return instance.patch(`/products/${idx}`, params).then((data) => {
+        return data
+    });
+}

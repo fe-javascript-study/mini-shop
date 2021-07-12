@@ -1,4 +1,4 @@
-import { getShop, filterShopList, deleteShopList, addShopList } from "./api/index";
+import { getShop, filterShopList, deleteShopList, addShopList, editShopList } from "./api/index";
 
 const renderTotalList =  () => {
     getShop().then((data) => {
@@ -47,16 +47,17 @@ const listRender = (data) => {
             <span>${item.size}</span>
             <span>${item.color}</span>
             <span>${item.price}</span>
-            <span>
-                <button>수정</button>
+            <div>
+                <button class="btn-edit">수정</button>
                 <button class="btn--delete">삭제</button>
-            </span>
+            </div>
         </li>`)
 
     contents.innerHTML = list;
 
-    onDelete()
-    onAdd()
+    onDelete();
+    onAdd();
+    onEdit();
 }
 
 const onDelete = () => {
@@ -129,6 +130,48 @@ const onAdd = () => {
 
     btn.addEventListener('click', () => {
         document.body.append(popupBox);
+    });
+}
+
+const onEdit = () => {
+    const btn = document.querySelectorAll('.btn-edit');
+
+    Array.from(btn).map((item) => {
+     item.addEventListener('click',(e) => {
+            const list = e.target.parentElement.parentElement.children;
+            const idx = e.target.parentElement.parentElement.getAttribute('data-idx');
+            let payload = Object.assign({name:'',gender:'',size:'',color:'',price:''});
+
+            if(item.textContent === '확인'){
+                item.textContent = '수정';
+
+                Array.from(list).map((item,idx) => {
+                    if(item.tagName === 'SPAN'){
+                        payload[Object.keys(payload)[idx]] = item.textContent;
+                    }
+                });
+
+                editShopList(idx, payload).then(()=>{
+                    renderTotalList()
+                });
+            }
+
+            if(item.textContent === '수정'){
+                item.textContent = '확인';
+
+                Array.from(list).map((item,idx) => {
+                    if(item.tagName === 'SPAN'){
+                        payload[Object.keys(payload)[idx]] = item.textContent;
+
+                        item.setAttribute('contenteditable',true);
+
+                        if(idx === 0){
+                            item.focus();
+                        }
+                    }
+                });
+            };
+        });
     });
 }
 

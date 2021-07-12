@@ -108,6 +108,10 @@ table {
     max-width: 140px;
 }
 
+.shop--contents li > span[contenteditable="true"]{
+    border:1px solid #000;
+}
+
 .popup-box{
     position: absolute;
     top: 50%;
