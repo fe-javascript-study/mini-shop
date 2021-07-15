@@ -25,6 +25,13 @@ h1 {
   font-size: 3rem;
 }
 
+.modal__btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 0 20px;
+}
+
 .clothes {
   width: 4.5em;
   height: 2.5em;
@@ -49,23 +56,32 @@ h1 {
 }
 
 .container {
+  display: flex;
+  justify-content: space-between;
   width: 50%;
   background-color: rgb(233, 233, 233);
-  margin: 0 auto;
+  margin: 10px auto;
   border-radius: 12px;
 }
 
 .inform {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  width: 30%;
+  margin: 0 auto;
+  margin-left: 350px;
   padding: 1em;
   align-items: center;
 }
-
+.inform__index {
+  list-style: none;
+}
 .inform__span {
   font-size: 1em;
   font-weight: bolder;
+  margin-left: 40px;
   color: rgb(41, 41, 41);
+  line-height: 50px;
 }
 
 .inform-btn {
@@ -80,4 +96,32 @@ h1 {
 
 .inform-btn:hover {
   background-color: white;
+}
+
+.modal-box {
+  display: block;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 30%;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  color: black;
+  border: 3px solid rgb(95, 95, 168);
+  text-align: center;
+  line-height: 70px;
+  margin-left: -320px;
+  transform: ;
+}
+
+.modal-box > label {
+  margin: 10px;
+}
+
+.modal-box > input {
+  border: none;
+  height: 20px;
+  border-radius: 10px;
 }
